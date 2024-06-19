@@ -6,9 +6,9 @@ using UnityEngine.Networking;
 
 public class ClockManager : MonoBehaviour
 {
-    public TMP_Text timeText;
+
     public static DateTime currentTime;
-    public static bool overrideTime;
+    public static bool overrideTime = false;
     private float nextSyncTime;
 
     private const string timeUrl = "https://yandex.com/time/sync.json";
@@ -24,11 +24,6 @@ public class ClockManager : MonoBehaviour
         // Update the current time
         currentTime += TimeSpan.FromSeconds(Time.deltaTime);
 
-        // Update the displayed time
-        if (timeText != null)
-        {
-            timeText.text = currentTime.ToString("HH:mm:ss");
-        }
 
         if (overrideTime == true)
             return;
